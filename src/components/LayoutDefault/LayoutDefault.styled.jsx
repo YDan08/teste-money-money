@@ -9,8 +9,9 @@ export const Container = styled.div`
 `;
 
 export const BoxLayout = styled.div`
-  min-width: 700px;
+  width: 700px;
   min-height: 600px;
-  border: 1px solid black;
+  border: 1px solid #d4d4d4;
   padding: 30px;
+  border-radius: 4px;
 `;
