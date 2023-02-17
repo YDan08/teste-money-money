@@ -10,6 +10,7 @@ import {
   InputSearch,
   Titulo,
 } from './Home.styled';
+import Solicitacao from '../../components/Solicitacao/Solicitacao';
 
 export const Home = () => {
   return (
@@ -20,7 +21,7 @@ export const Home = () => {
             <ColUser span={20}>
               <Avatar size={64} src={foto} />
               <InfoUser>
-                <Typography.Text>Seja bem-vindo</Typography.Text>
+                <Typography.Text strong>Seja bem-vindo</Typography.Text>
                 <Typography.Text>Daniel Yamashita</Typography.Text>
               </InfoUser>
             </ColUser>
@@ -36,6 +37,31 @@ export const Home = () => {
             <IconButton icon={<PlusOutlined />} />
           </DivOportunidade>
           <InputSearch placeholder="input search text" />
+        </Col>
+        <Col span={24}>
+          <Row justify="center">
+            <Col span={20}>
+              <Solicitacao
+                nomeEmpresa="Money Money Invest"
+                cnpjEmpresa="12312321312"
+                valorSolicitado={120000}
+              />
+            </Col>
+            <Col span={20}>
+              <Solicitacao
+                nomeEmpresa="Money Money Invest"
+                cnpjEmpresa="12312321312"
+                valorSolicitado={120000}
+              />
+            </Col>
+            <Col span={20}>
+              <Solicitacao
+                nomeEmpresa="Money Money Invest"
+                cnpjEmpresa="12312321312"
+                valorSolicitado={120000}
+              />
+            </Col>
+          </Row>
         </Col>
       </Row>
     </LayoutDefault>
