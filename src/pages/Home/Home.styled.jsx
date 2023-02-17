@@ -17,6 +17,13 @@ export const InfoUser = styled.div`
 export const IconButton = styled(Button)`
   border-radius: 50%;
   background-color: #ff6600;
+  color: white;
+  && {
+    :hover {
+      color: black;
+      border: 0px;
+    }
+  }
 `;
 
 export const DivOportunidade = styled.div`
@@ -33,4 +40,24 @@ export const Titulo = styled(Typography.Title)`
 
 export const InputSearch = styled(Search)`
   margin-top: 16px;
+  && {
+    input {
+      :hover,
+      :active,
+      :focus {
+        border-color: #ff6600;
+      }
+    }
+    span {
+      button {
+        :hover,
+        :active {
+          border-color: #ff6600;
+        }
+        span {
+          color: #ff6600;
+        }
+      }
+    }
+  }
 `;
