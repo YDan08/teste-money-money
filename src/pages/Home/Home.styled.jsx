@@ -15,10 +15,15 @@ export const InfoUser = styled.div`
 `;
 
 export const IconButton = styled(Button)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   background-color: #ff6600;
   color: white;
   && {
+    width: 18px;
+    height: 18px;
     :hover {
       color: black;
       border: 0px;
@@ -32,6 +37,8 @@ export const DivOportunidade = styled.div`
 `;
 
 export const Titulo = styled(Typography.Title)`
+  display: flex;
+
   && {
     text-align: center;
     margin: 0px 4px 0px 0px;

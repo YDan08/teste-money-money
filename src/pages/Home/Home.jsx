@@ -34,7 +34,7 @@ export const Home = () => {
         <Col span={20}>
           <DivOportunidade>
             <Titulo level={4}>Oportunidades</Titulo>
-            <IconButton icon={<PlusOutlined />} />
+            <IconButton icon={<PlusOutlined style={{ fontSize: 8 }} />} />
           </DivOportunidade>
           <InputSearch placeholder="input search text" />
         </Col>
