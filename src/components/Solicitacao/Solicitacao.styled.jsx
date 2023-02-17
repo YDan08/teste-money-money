@@ -3,8 +3,10 @@ import styled from 'styled-components';
 
 export const ContainerSolicitacao = styled.div`
   width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
   border: 1px solid #d4d4d4;
-  border-radius: 4px;
+  border-radius: 5px;
   padding: 8px 0px;
   margin: 24px 0px;
 `;

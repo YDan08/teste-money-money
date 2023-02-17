@@ -9,9 +9,10 @@ export const Container = styled.div`
 `;
 
 export const BoxLayout = styled.div`
+  box-sizing: border-box;
   width: 700px;
   min-height: 600px;
-  border: 1px solid #d4d4d4;
+  border: 1px solid #ececec;
+  border-radius: 5px;
   padding: 30px;
-  border-radius: 4px;
 `;
