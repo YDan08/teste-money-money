@@ -1,6 +1,7 @@
 import { Avatar, Badge, Button, Col, Row, Typography } from 'antd';
 import { BellOutlined, PlusOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import LayoutDefault from '../../components/LayoutDefault';
 import foto from '../../assets/foto.jpg';
 import {
@@ -45,7 +46,9 @@ export const Home = () => {
         <Col span={20}>
           <DivOportunidade>
             <Titulo level={4}>Oportunidades</Titulo>
-            <IconButton icon={<PlusOutlined style={{ fontSize: 8 }} />} />
+            <Link to="/add-solicitacao">
+              <IconButton icon={<PlusOutlined style={{ fontSize: 8 }} />} />
+            </Link>
           </DivOportunidade>
           <InputSearch placeholder="input search text" />
         </Col>
