@@ -1,10 +1,5 @@
-import { Button, Typography } from 'antd';
+import { Button } from 'antd';
 import styled from 'styled-components';
-
-export const TituloCategoria = styled(Typography.Text)`
-  font-size: 20px;
-  font-weight: 600;
-`;
 
 export const BotaoEditar = styled(Button)`
   background: #fff3cd;

@@ -4,9 +4,10 @@ import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import LayoutDefault from '../../components/LayoutDefault';
 import Categoria from '../../components/Categoria';
+import TituloCategoria from '../../components/TituloCategoria';
 import Info from '../../components/Info';
 import { api } from '../../utils/api';
-import { BotaoEditar, TituloCategoria } from './Details.styled';
+import { BotaoEditar } from './Details.styled';
 
 export const Details = () => {
   const { state } = useLocation();
