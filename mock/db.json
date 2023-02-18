@@ -1,0 +1,55 @@
+{
+	"solicitacoes": [
+		{
+			"id": 1, 
+			"nomeEmpresa": "Money Money Invest",
+			"faturamentoAnual": 180000,
+			"valorSolicitado": 20000,
+			"endereco": {
+				"rua": "Rua Neto da Silva",
+				"numero": 658,
+				"cep": "12430242-09",
+				"cidade": "São Paulo",
+				"estado": "São Paulo"
+			},
+			"nomeResponsavel": "Daniel",
+			"telefone": "11 949594000",
+			"email": "algo@moneymoney.com.br",
+			"cnpj": "123123131"
+		},
+		{
+			"id": 2, 
+			"nomeEmpresa": "Montreal Viagens",
+			"faturamentoAnual": 180000,
+			"valorSolicitado": 20000,
+			"endereco": {
+				"rua": "Rua Neto da Silva",
+				"numero": 658,
+				"cep": "12430242-09",
+				"cidade": "São Paulo",
+				"estado": "São Paulo"
+			},
+			"nomeResponsavel": "Daniel",
+			"telefone": "11 949594000",
+			"email": "algo@moneymoney.com.br",
+			"cnpj": "123123131"
+		},
+		{
+			"id": 3, 
+			"nomeEmpresa": "Tesouraria Junior",
+			"faturamentoAnual": 180000,
+			"valorSolicitado": 20000,
+			"endereco": {
+				"rua": "Rua Neto da Silva",
+				"numero": 658,
+				"cep": "12430242-09",
+				"cidade": "São Paulo",
+				"estado": "São Paulo"
+			},
+			"nomeResponsavel": "Daniel",
+			"telefone": "11 949594000",
+			"email": "algo@moneymoney.com.br",
+			"cnpj": "123123131"
+		}
+	]
+}
