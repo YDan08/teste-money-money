@@ -10,7 +10,8 @@
 				"numero": 658,
 				"cep": "12430242-09",
 				"cidade": "São Paulo",
-				"estado": "São Paulo"
+				"estado": "São Paulo",
+				"bairro": "Pinheiros"
 			},
 			"nomeResponsavel": "Daniel",
 			"telefone": "11 949594000",
@@ -27,7 +28,9 @@
 				"numero": 658,
 				"cep": "12430242-09",
 				"cidade": "São Paulo",
-				"estado": "São Paulo"
+				"estado": "São Paulo",
+				"bairro": "Pinheiros"
+				
 			},
 			"nomeResponsavel": "Daniel",
 			"telefone": "11 949594000",
@@ -44,7 +47,8 @@
 				"numero": 658,
 				"cep": "12430242-09",
 				"cidade": "São Paulo",
-				"estado": "São Paulo"
+				"estado": "São Paulo",
+				"bairro": "Pinheiros"
 			},
 			"nomeResponsavel": "Daniel",
 			"telefone": "11 949594000",
