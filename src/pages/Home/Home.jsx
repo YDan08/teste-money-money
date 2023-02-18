@@ -1,5 +1,6 @@
 import { Avatar, Badge, Button, Col, Row, Typography } from 'antd';
 import { BellOutlined, PlusOutlined } from '@ant-design/icons';
+import { useEffect, useState } from 'react';
 import LayoutDefault from '../../components/LayoutDefault';
 import foto from '../../assets/foto.jpg';
 import {
@@ -11,8 +12,18 @@ import {
   Titulo,
 } from './Home.styled';
 import Solicitacao from '../../components/Solicitacao/Solicitacao';
+import { api } from '../../utils/api';
 
 export const Home = () => {
+  const [solicitacoes, setSolicitacoes] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const dados = await api.get('/solicitacoes');
+      setSolicitacoes(dados.data);
+    })();
+  }, []);
+
   return (
     <LayoutDefault>
       <Row justify="center" gutter={[0, 12]}>
@@ -40,27 +51,20 @@ export const Home = () => {
         </Col>
         <Col span={24}>
           <Row justify="center">
-            <Col span={20}>
-              <Solicitacao
-                nomeEmpresa="Money Money Invest"
-                cnpjEmpresa="12312321312"
-                valorSolicitado={120000}
-              />
-            </Col>
-            <Col span={20}>
-              <Solicitacao
-                nomeEmpresa="Money Money Invest"
-                cnpjEmpresa="12312321312"
-                valorSolicitado={120000}
-              />
-            </Col>
-            <Col span={20}>
-              <Solicitacao
-                nomeEmpresa="Money Money Invest"
-                cnpjEmpresa="12312321312"
-                valorSolicitado={120000}
-              />
-            </Col>
+            {solicitacoes.length !== 0 ? (
+              solicitacoes.map((solicitacao) => (
+                <Col span={20} key={solicitacao.nomeEmpresa}>
+                  <Solicitacao
+                    id={solicitacao.id}
+                    nomeEmpresa={solicitacao.nomeEmpresa}
+                    cnpjEmpresa={solicitacao.cnpj}
+                    valorSolicitado={solicitacao.valorSolicitado}
+                  />
+                </Col>
+              ))
+            ) : (
+              <Typography.Text>Não existem solicitações</Typography.Text>
+            )}
           </Row>
         </Col>
       </Row>
