@@ -27,6 +27,7 @@
 			"import/no-extraneous-dependencies": "off",
 			"import/no-named-as-default": "off",
 			"no-restricted-exports": "off",
-			"import/prefer-default-export": "off"
+			"import/prefer-default-export": "off",
+			"react/prop-types": "off"
     }
 }
