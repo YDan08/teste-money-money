@@ -93,16 +93,21 @@ export const Details = () => {
           </BotaoEditar>
         </Col>
 
-        <Categoria>
-          <TituloCategoria>Endereço</TituloCategoria>
-        </Categoria>
-        <Col span={20}>
-          <Info
-            categoria="Endereço"
-            valor={`${solicitacao.rua}, ${solicitacao.numero} - ${solicitacao.bairro}, ${solicitacao.cidade} - ${solicitacao.estado}`}
-          />
-          <Info categoria="CEP" valor={solicitacao.cep} />
-        </Col>
+        {solicitacao.endereco &&
+          Object.keys(solicitacao.endereco).length !== 0 && (
+            <>
+              <Categoria>
+                <TituloCategoria>Endereço</TituloCategoria>
+              </Categoria>
+              <Col span={20}>
+                <Info
+                  categoria="Endereço"
+                  valor={`${solicitacao.endereco.rua}, ${solicitacao.endereco.numero} - ${solicitacao.endereco.bairro}, ${solicitacao.endereco.cidade} - ${solicitacao.endereco.estado}`}
+                />
+                <Info categoria="CEP" valor={solicitacao.endereco.cep} />
+              </Col>
+            </>
+          )}
 
         <Categoria>
           <TituloCategoria>Contato</TituloCategoria>
