@@ -25,6 +25,7 @@ export const TituloEmpresa = styled(Typography.Text)`
 `;
 
 export const CnpjEmpresa = styled(Typography.Text)`
+  color: #d9d9d9;
   && {
     font-weight: 600;
     font-size: 13px;
@@ -39,7 +40,6 @@ export const ValorSolicitado = styled(Typography.Text)`
 `;
 
 export const BotaoSeta = styled(Button)`
-  border-radius: 50%;
   background-color: #ff6600;
   margin-right: 20px;
   color: white;

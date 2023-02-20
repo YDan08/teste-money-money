@@ -30,6 +30,7 @@ export const Solicitacao = ({
         </Col>
 
         <BotaoSeta
+          shape="circle"
           icon={<RightOutlined />}
           onClick={() => navigate('/details', { state: { id } })}
         />
