@@ -88,7 +88,7 @@ export const EditSolicitacao = () => {
                 },
               ]}
             >
-              <Input />
+              <Input prefix="R$" type="number" />
             </Form.Item>
             <Form.Item
               label="Valor solicitado"
@@ -97,7 +97,7 @@ export const EditSolicitacao = () => {
                 { required: true, message: 'O valor solicitado é obrigatório' },
               ]}
             >
-              <Input />
+              <Input prefix="R$" type="number" />
             </Form.Item>
             <Form.Item
               label="CNPJ"
@@ -112,32 +112,32 @@ export const EditSolicitacao = () => {
             <TituloCategoria>Endereço</TituloCategoria>
           </Categoria>
           <Col span={20}>
-            <Form.Item label="CEP" name="cep">
+            <Form.Item label="CEP" name={['endereco', 'cep']}>
               <Input />
             </Form.Item>
             <Row justify="space-between" gutter={8}>
               <Col span={16}>
-                <Form.Item label="Rua" name="rua">
+                <Form.Item label="Rua" name={['endereco', 'rua']}>
                   <Input />
                 </Form.Item>
               </Col>
               <Col span={8}>
-                <Form.Item label="Número" name="numero">
+                <Form.Item label="Número" name={['endereco', 'numero']}>
                   <Input />
                 </Form.Item>
               </Col>
             </Row>
-            <Form.Item label="Bairro" name="bairro">
+            <Form.Item label="Bairro" name={['endereco', 'bairro']}>
               <Input />
             </Form.Item>
             <Row justify="space-between" gutter={8}>
               <Col span={16}>
-                <Form.Item label="Cidade" name="cidade">
+                <Form.Item label="Cidade" name={['endereco', 'cidade']}>
                   <Input />
                 </Form.Item>
               </Col>
               <Col span={8}>
-                <Form.Item label="Estado" name="estado">
+                <Form.Item label="Estado" name={['endereco', 'estado']}>
                   <Input />
                 </Form.Item>
               </Col>
