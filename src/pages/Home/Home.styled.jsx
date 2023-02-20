@@ -1,8 +1,6 @@
 import { Button, Col, Input, Typography } from 'antd';
 import styled from 'styled-components';
 
-const { Search } = Input;
-
 export const ColUser = styled(Col)`
   display: flex;
 `;
@@ -15,15 +13,9 @@ export const InfoUser = styled.div`
 `;
 
 export const IconButton = styled(Button)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
   background-color: #ff6600;
   color: white;
   && {
-    width: 18px;
-    height: 18px;
     :hover {
       color: black;
       border: 0px;
@@ -45,26 +37,12 @@ export const Titulo = styled(Typography.Title)`
   }
 `;
 
-export const InputSearch = styled(Search)`
+export const InputSearch = styled(Input)`
   margin-top: 16px;
+  color: #d9d9d9;
   && {
-    input {
-      :hover,
-      :active,
-      :focus {
-        border-color: #ff6600;
-      }
-    }
-    span {
-      button {
-        :hover,
-        :active {
-          border-color: #ff6600;
-        }
-        span {
-          color: #ff6600;
-        }
-      }
+    :hover {
+      border-color: #ff6600;
     }
   }
 `;

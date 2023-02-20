@@ -1,7 +1,7 @@
-import { Avatar, Badge, Button, Col, Row, Typography } from 'antd';
-import { BellOutlined, PlusOutlined } from '@ant-design/icons';
+import { Avatar, Badge, Col, Row, Typography } from 'antd';
+import { BellOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icons';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import LayoutDefault from '../../components/LayoutDefault';
 import foto from '../../assets/foto.jpg';
 import {
@@ -17,6 +17,8 @@ import { api } from '../../utils/api';
 
 export const Home = () => {
   const [solicitacoes, setSolicitacoes] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -39,18 +41,22 @@ export const Home = () => {
             </ColUser>
 
             <Badge dot color="orange">
-              <Button icon={<BellOutlined />} type="text" size="middle" />
+              <BellOutlined style={{ fontSize: 16, color: '#D9D9D9' }} />
             </Badge>
           </Row>
         </Col>
         <Col span={20}>
           <DivOportunidade>
-            <Titulo level={4}>Oportunidades</Titulo>
-            <Link to="/add-solicitacao">
-              <IconButton icon={<PlusOutlined style={{ fontSize: 8 }} />} />
-            </Link>
+            <Titulo level={3}>Oportunidades</Titulo>
+
+            <IconButton
+              shape="circle"
+              onClick={() => navigate('/add-solicitacao')}
+              size="small"
+              icon={<PlusOutlined />}
+            />
           </DivOportunidade>
-          <InputSearch placeholder="input search text" />
+          <InputSearch prefix={<SearchOutlined />} />
         </Col>
         <Col span={24}>
           <Row justify="center">
