@@ -56,7 +56,7 @@ export const Details = () => {
         </Col>
 
         <Col span={20}>
-          <Typography.Title level={4}>Detalhes</Typography.Title>
+          <Typography.Title level={3}>Detalhes</Typography.Title>
         </Col>
 
         <Categoria>
