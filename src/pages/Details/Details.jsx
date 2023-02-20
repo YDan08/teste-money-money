@@ -1,6 +1,6 @@
 import { ArrowLeftOutlined, DeleteOutlined } from '@ant-design/icons';
-import { Button, Col, Row, Typography } from 'antd';
-import { Link, useLocation } from 'react-router-dom';
+import { Button, Col, message, Popconfirm, Row, Typography } from 'antd';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import LayoutDefault from '../../components/LayoutDefault';
 import Categoria from '../../components/Categoria';
@@ -12,6 +12,17 @@ import { BotaoEditar } from './Details.styled';
 export const Details = () => {
   const { state } = useLocation();
   const [solicitacao, setSolicitacao] = useState([]);
+  const navigate = useNavigate();
+
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const error = () => {
+    messageApi.open({
+      type: 'error',
+      content: 'Não foi possível remover a solicitação',
+    });
+  };
+
   useEffect(() => {
     (async () => {
       const dados = await api.get(`/solicitacoes/${state.id}`);
@@ -19,8 +30,18 @@ export const Details = () => {
     })();
   }, []);
 
+  const excluirSolicitacao = async () => {
+    try {
+      await api.delete(`/solicitacoes/${state.id}`);
+      navigate('/');
+    } catch (e) {
+      error();
+    }
+  };
+
   return (
     <LayoutDefault>
+      {contextHolder}
       <Row justify="center">
         <Col span={20}>
           <Link to="/">
@@ -40,9 +61,19 @@ export const Details = () => {
 
         <Categoria>
           <TituloCategoria>{solicitacao.nomeEmpresa}</TituloCategoria>
-          <Button danger type="primary" icon={<DeleteOutlined />}>
-            Remover Solicitação
-          </Button>
+          <Popconfirm
+            title="Excluir solicitação"
+            description="Você deseja remover essa solicitação?"
+            okText="Sim"
+            cancelText="Não"
+            onConfirm={excluirSolicitacao}
+            placement="bottom"
+            okButtonProps={{ danger: true }}
+          >
+            <Button danger type="primary" icon={<DeleteOutlined />}>
+              Remover Solicitação
+            </Button>
+          </Popconfirm>
         </Categoria>
         <Col span={20}>
           <Info
@@ -53,7 +84,11 @@ export const Details = () => {
             categoria="Faturamento anual"
             valor={`R$ ${solicitacao.faturamentoAnual}`}
           />
-          <BotaoEditar>
+          <BotaoEditar
+            onClick={() =>
+              navigate('/edit-solicitacao', { state: { id: state.id } })
+            }
+          >
             Deseja editar solicitação? Clique para editar
           </BotaoEditar>
         </Col>
@@ -62,11 +97,11 @@ export const Details = () => {
           <TituloCategoria>Endereço</TituloCategoria>
         </Categoria>
         <Col span={20}>
-          {/*    <Info
+          <Info
             categoria="Endereço"
-            valor={`${solicitacao.endereco.rua}, ${solicitacao.endereco.numero} - Pinheiros, ${solicitacao.endereco.cidade} - ${solicitacao.endereco.estado}`}
+            valor={`${solicitacao.rua}, ${solicitacao.numero} - ${solicitacao.bairro}, ${solicitacao.cidade} - ${solicitacao.estado}`}
           />
-          <Info categoria="CEP" valor={solicitacao.endereco.cep} /> */}
+          <Info categoria="CEP" valor={solicitacao.cep} />
         </Col>
 
         <Categoria>
@@ -74,7 +109,7 @@ export const Details = () => {
         </Categoria>
         <Col span={20}>
           <Info categoria="Nome" valor={solicitacao.nomeResponsavel} />
-          <Info categoria="CPF" valor={solicitacao.cnpj} />
+          <Info categoria="CPF" valor={solicitacao.cpf} />
           <Info categoria="Telefone" valor={solicitacao.telefone} />
           <Info categoria="Email" valor={solicitacao.email} />
         </Col>
