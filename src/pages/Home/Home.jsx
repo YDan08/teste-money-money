@@ -17,6 +17,7 @@ import { api } from '../../utils/api';
 
 export const Home = () => {
   const [solicitacoes, setSolicitacoes] = useState([]);
+  const [busca, setBusca] = useState('');
 
   const navigate = useNavigate();
 
@@ -26,6 +27,17 @@ export const Home = () => {
       setSolicitacoes(dados.data);
     })();
   }, []);
+
+  useEffect(() => {
+    (async () => {
+      const dados = await api.get('/solicitacoes', {
+        params: {
+          nomeEmpresa_like: busca,
+        },
+      });
+      setSolicitacoes(dados.data);
+    })();
+  }, [busca]);
 
   return (
     <LayoutDefault>
@@ -56,7 +68,10 @@ export const Home = () => {
               icon={<PlusOutlined />}
             />
           </DivOportunidade>
-          <InputSearch prefix={<SearchOutlined />} />
+          <InputSearch
+            prefix={<SearchOutlined />}
+            onChange={(e) => setBusca(e.target.value)}
+          />
         </Col>
         <Col span={24}>
           <Row justify="center">
@@ -72,7 +87,9 @@ export const Home = () => {
                 </Col>
               ))
             ) : (
-              <Typography.Text>Não existem solicitações</Typography.Text>
+              <Typography.Title level={5}>
+                Não existem solicitações
+              </Typography.Title>
             )}
           </Row>
         </Col>
