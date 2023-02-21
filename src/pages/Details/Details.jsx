@@ -9,6 +9,7 @@ import Info from '../../components/Info';
 import { api } from '../../utils/api';
 import { BotaoEditar } from './Details.styled';
 import routes from '../../utils/routes';
+import intl from '../../utils/intl';
 
 export const Details = () => {
   const { state } = useLocation();
@@ -79,11 +80,11 @@ export const Details = () => {
         <Col span={20}>
           <Info
             categoria="Valor solicitado"
-            valor={`R$ ${solicitacao.valorSolicitado}`}
+            valor={intl.format(solicitacao.valorSolicitado)}
           />
           <Info
             categoria="Faturamento anual"
-            valor={`R$ ${solicitacao.faturamentoAnual}`}
+            valor={intl.format(solicitacao.faturamentoAnual)}
           />
           <BotaoEditar
             onClick={() =>
@@ -103,9 +104,25 @@ export const Details = () => {
               <Col span={20}>
                 <Info
                   categoria="Endereço"
-                  valor={`${solicitacao.endereco.rua}, ${solicitacao.endereco.numero} - ${solicitacao.endereco.bairro}, ${solicitacao.endereco.cidade} - ${solicitacao.endereco.estado}`}
+                  valor={`${
+                    solicitacao.endereco.rua
+                      ? `${solicitacao.endereco.rua}, `
+                      : ''
+                  }${
+                    solicitacao.endereco.numero
+                      ? `${solicitacao.endereco.numero} - `
+                      : ''
+                  }${
+                    solicitacao.endereco.bairro
+                      ? `${solicitacao.endereco.bairro}, `
+                      : ''
+                  }, ${
+                    solicitacao.endereco.cidade
+                      ? `${solicitacao.endereco.cidade} - `
+                      : ''
+                  }${solicitacao.endereco.estado ?? ''}`}
                 />
-                <Info categoria="CEP" valor={solicitacao.endereco.cep} />
+                <Info categoria="CEP" valor={solicitacao.endereco.cep ?? ''} />
               </Col>
             </>
           )}
