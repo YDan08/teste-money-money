@@ -47,7 +47,12 @@ export const EditSolicitacao = () => {
   return (
     <LayoutDefault>
       {contextHolder}
-      <Form layout="vertical" form={form} onFinish={editarSolicitacao}>
+      <Form
+        layout="vertical"
+        form={form}
+        onFinish={editarSolicitacao}
+        requiredMark={false}
+      >
         <Row justify="center">
           <Col span={20}>
             <Link to="/">

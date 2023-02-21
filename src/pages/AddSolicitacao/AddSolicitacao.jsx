@@ -31,7 +31,11 @@ export const AddSolicitacao = () => {
   return (
     <LayoutDefault>
       {contextHolder}
-      <Form layout="vertical" onFinish={cadastrarSolicitacao}>
+      <Form
+        layout="vertical"
+        onFinish={cadastrarSolicitacao}
+        requiredMark={false}
+      >
         <Row justify="center">
           <Col span={20}>
             <Link to="/">
