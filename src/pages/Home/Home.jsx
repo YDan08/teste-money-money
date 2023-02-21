@@ -14,6 +14,7 @@ import {
 } from './Home.styled';
 import Solicitacao from '../../components/Solicitacao/Solicitacao';
 import { api } from '../../utils/api';
+import routes from '../../utils/routes';
 
 export const Home = () => {
   const [solicitacoes, setSolicitacoes] = useState([]);
@@ -63,7 +64,7 @@ export const Home = () => {
 
             <IconButton
               shape="circle"
-              onClick={() => navigate('/add-solicitacao')}
+              onClick={() => navigate(routes.addSolicitacao)}
               size="small"
               icon={<PlusOutlined />}
             />

@@ -10,6 +10,7 @@ import {
   TituloEmpresa,
   ValorSolicitado,
 } from './Solicitacao.styled';
+import routes from '../../utils/routes';
 
 export const Solicitacao = ({
   nomeEmpresa,
@@ -32,7 +33,7 @@ export const Solicitacao = ({
         <BotaoSeta
           shape="circle"
           icon={<RightOutlined />}
-          onClick={() => navigate('/details', { state: { id } })}
+          onClick={() => navigate(routes.details, { state: { id } })}
         />
       </Row>
     </ContainerSolicitacao>

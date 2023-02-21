@@ -7,6 +7,7 @@ import LayoutDefault from '../../components/LayoutDefault';
 import TituloCategoria from '../../components/TituloCategoria';
 import BotaoForm from '../../components/BotaoForm';
 import { api } from '../../utils/api';
+import routes from '../../utils/routes';
 
 export const EditSolicitacao = () => {
   const [form] = Form.useForm();
@@ -55,7 +56,7 @@ export const EditSolicitacao = () => {
       >
         <Row justify="center">
           <Col span={20}>
-            <Link to="/">
+            <Link to={routes.details} state={{ id: state.id }}>
               <Button
                 icon={<ArrowLeftOutlined />}
                 type="text"

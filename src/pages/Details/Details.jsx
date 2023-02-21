@@ -8,6 +8,7 @@ import TituloCategoria from '../../components/TituloCategoria';
 import Info from '../../components/Info';
 import { api } from '../../utils/api';
 import { BotaoEditar } from './Details.styled';
+import routes from '../../utils/routes';
 
 export const Details = () => {
   const { state } = useLocation();
@@ -33,7 +34,7 @@ export const Details = () => {
   const excluirSolicitacao = async () => {
     try {
       await api.delete(`/solicitacoes/${state.id}`);
-      navigate('/');
+      navigate(routes.home);
     } catch (e) {
       error();
     }
@@ -44,7 +45,7 @@ export const Details = () => {
       {contextHolder}
       <Row justify="center">
         <Col span={20}>
-          <Link to="/">
+          <Link to={routes.home}>
             <Button
               icon={<ArrowLeftOutlined />}
               type="text"
@@ -86,7 +87,7 @@ export const Details = () => {
           />
           <BotaoEditar
             onClick={() =>
-              navigate('/edit-solicitacao', { state: { id: state.id } })
+              navigate(routes.editSolicitacao, { state: { id: state.id } })
             }
           >
             Deseja editar solicitação? Clique para editar

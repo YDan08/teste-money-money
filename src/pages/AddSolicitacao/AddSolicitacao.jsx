@@ -6,6 +6,7 @@ import Categoria from '../../components/Categoria';
 import TituloCategoria from '../../components/TituloCategoria';
 import BotaoForm from '../../components/BotaoForm';
 import { api } from '../../utils/api';
+import routes from '../../utils/routes';
 
 export const AddSolicitacao = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export const AddSolicitacao = () => {
   const cadastrarSolicitacao = async (dados) => {
     try {
       await api.post('/solicitacoes', dados);
-      navigate('/');
+      navigate(routes.home);
     } catch (e) {
       error();
     }
@@ -38,7 +39,7 @@ export const AddSolicitacao = () => {
       >
         <Row justify="center">
           <Col span={20}>
-            <Link to="/">
+            <Link to={routes.home}>
               <Button
                 icon={<ArrowLeftOutlined />}
                 type="text"
