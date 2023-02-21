@@ -1,12 +1,29 @@
+/* eslint-disable no-unused-vars */
 import { ArrowLeftOutlined } from '@ant-design/icons';
-import { Button, Col, Form, Input, message, Row, Typography } from 'antd';
+import {
+  Button,
+  Col,
+  Form,
+  Input,
+  InputNumber,
+  message,
+  Row,
+  Typography,
+} from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import LayoutDefault from '../../components/LayoutDefault';
 import Categoria from '../../components/Categoria';
 import TituloCategoria from '../../components/TituloCategoria';
 import BotaoForm from '../../components/BotaoForm';
 import { api } from '../../utils/api';
 import routes from '../../utils/routes';
+import {
+  formatCEPInput,
+  formatCNPJInput,
+  formatCPFInput,
+  formatTelefoneInput,
+} from '../../utils/formats';
 
 export const AddSolicitacao = () => {
   const navigate = useNavigate();
@@ -29,6 +46,27 @@ export const AddSolicitacao = () => {
     }
   };
 
+  const [form] = Form.useForm();
+  const cnpj = Form.useWatch('cnpj', form);
+  const telefone = Form.useWatch('telefone', form);
+  const cpf = Form.useWatch('cpf', form);
+  const cep = Form.useWatch(['endereco', 'cep'], form);
+
+  useEffect(() => {
+    if (cnpj != null && cnpj.length > 0) {
+      form.setFieldValue('cnpj', formatCNPJInput(cnpj));
+    }
+    if (telefone != null && telefone.length > 0) {
+      form.setFieldValue('telefone', formatTelefoneInput(telefone));
+    }
+    if (cep != null && cep.length > 0) {
+      form.setFieldValue(['endereco', 'cep'], formatCEPInput(cep));
+    }
+    if (cpf != null && cpf.length > 0) {
+      form.setFieldValue('cpf', formatCPFInput(cpf));
+    }
+  }, [cnpj, telefone, cep, cpf]);
+
   return (
     <LayoutDefault>
       {contextHolder}
@@ -36,6 +74,7 @@ export const AddSolicitacao = () => {
         layout="vertical"
         onFinish={cadastrarSolicitacao}
         requiredMark={false}
+        form={form}
       >
         <Row justify="center">
           <Col span={20}>
@@ -79,7 +118,7 @@ export const AddSolicitacao = () => {
                 },
               ]}
             >
-              <Input prefix="R$" type="number" />
+              <InputNumber prefix="R$" style={{ width: '100%' }} />
             </Form.Item>
             <Form.Item
               label="Valor solicitado"
@@ -95,7 +134,7 @@ export const AddSolicitacao = () => {
               name="cnpj"
               rules={[{ required: true, message: 'O CNPJ é obrigatório' }]}
             >
-              <Input />
+              <Input maxLength={18} name="cnpj" />
             </Form.Item>
           </Col>
 
@@ -104,7 +143,7 @@ export const AddSolicitacao = () => {
           </Categoria>
           <Col span={20}>
             <Form.Item label="CEP" name={['endereco', 'cep']}>
-              <Input />
+              <Input maxLength={9} />
             </Form.Item>
             <Row justify="space-between" gutter={8}>
               <Col span={16}>
@@ -142,48 +181,28 @@ export const AddSolicitacao = () => {
             <Form.Item
               label="Nome completo"
               name="nomeResponsavel"
-              rules={[
-                {
-                  required: true,
-                  message: 'O nome completo é obrigatório',
-                },
-              ]}
+              rules={[{ required: true, message: 'O nome é obrigatório' }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               label="Telefone de contato"
               name="telefone"
-              rules={[
-                {
-                  required: true,
-                  message: 'O telefone é obrigatório',
-                },
-              ]}
+              rules={[{ required: true, message: 'O telefone é obrigatório' }]}
             >
-              <Input />
+              <Input maxLength={15} />
             </Form.Item>
             <Form.Item
               label="Email"
               name="email"
-              rules={[
-                {
-                  required: true,
-                  message: 'O email é obrigatório',
-                },
-              ]}
+              rules={[{ required: true, message: 'O email é obrigatório' }]}
             >
               <Input />
             </Form.Item>
             <Form.Item
               label="CPF"
               name="cpf"
-              rules={[
-                {
-                  required: true,
-                  message: 'O CPF é obrigatório',
-                },
-              ]}
+              rules={[{ required: true, message: 'O cpf é obrigatório' }]}
             >
               <Input />
             </Form.Item>
