@@ -8,6 +8,12 @@ import TituloCategoria from '../../components/TituloCategoria';
 import BotaoForm from '../../components/BotaoForm';
 import { api } from '../../utils/api';
 import routes from '../../utils/routes';
+import {
+  formatCEPInput,
+  formatCNPJInput,
+  formatCPFInput,
+  formatTelefoneInput,
+} from '../../utils/formats';
 
 export const EditSolicitacao = () => {
   const [form] = Form.useForm();
@@ -44,6 +50,26 @@ export const EditSolicitacao = () => {
       error();
     }
   };
+
+  const cnpj = Form.useWatch('cnpj', form);
+  const telefone = Form.useWatch('telefone', form);
+  const cpf = Form.useWatch('cpf', form);
+  const cep = Form.useWatch(['endereco', 'cep'], form);
+
+  useEffect(() => {
+    if (cnpj != null && cnpj.length > 0) {
+      form.setFieldValue('cnpj', formatCNPJInput(cnpj));
+    }
+    if (telefone != null && telefone.length > 0) {
+      form.setFieldValue('telefone', formatTelefoneInput(telefone));
+    }
+    if (cep != null && cep.length > 0) {
+      form.setFieldValue(['endereco', 'cep'], formatCEPInput(cep));
+    }
+    if (cpf != null && cpf.length > 0) {
+      form.setFieldValue('cpf', formatCPFInput(cpf));
+    }
+  }, [cnpj, telefone, cep, cpf]);
 
   return (
     <LayoutDefault>
@@ -110,7 +136,7 @@ export const EditSolicitacao = () => {
               name="cnpj"
               rules={[{ required: true, message: 'O CNPJ é obrigatório' }]}
             >
-              <Input />
+              <Input maxLength={18} />
             </Form.Item>
           </Col>
 
@@ -119,7 +145,7 @@ export const EditSolicitacao = () => {
           </Categoria>
           <Col span={20}>
             <Form.Item label="CEP" name={['endereco', 'cep']}>
-              <Input />
+              <Input maxLength={9} />
             </Form.Item>
             <Row justify="space-between" gutter={8}>
               <Col span={16}>
@@ -158,13 +184,13 @@ export const EditSolicitacao = () => {
               <Input />
             </Form.Item>
             <Form.Item label="Telefone de contato" name="telefone">
-              <Input />
+              <Input maxLength={15} />
             </Form.Item>
             <Form.Item label="Email" name="email">
               <Input />
             </Form.Item>
             <Form.Item label="CPF" name="cpf">
-              <Input />
+              <Input maxLength={14} />
             </Form.Item>
           </Col>
 
