@@ -26,7 +26,7 @@ export const Solicitacao = ({
           <DadosSolicitacao>
             <TituloEmpresa>{nomeEmpresa}</TituloEmpresa>
             <CnpjEmpresa>{cnpjEmpresa}</CnpjEmpresa>
-            <ValorSolicitado>R$ {valorSolicitado}</ValorSolicitado>
+            <ValorSolicitado>{valorSolicitado}</ValorSolicitado>
           </DadosSolicitacao>
         </Col>
 

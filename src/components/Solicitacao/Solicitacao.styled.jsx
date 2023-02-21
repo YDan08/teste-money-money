@@ -45,8 +45,8 @@ export const BotaoSeta = styled(Button)`
   color: white;
   && {
     :hover {
-      color: black;
-      background-color: #ff6600;
+      color: white;
+      background-color: #fe7f2b;
       border: 0px;
     }
   }
