@@ -15,6 +15,7 @@ import {
 import Solicitacao from '../../components/Solicitacao/Solicitacao';
 import { api } from '../../utils/api';
 import routes from '../../utils/routes';
+import intl from '../../utils/intl';
 
 export const Home = () => {
   const [solicitacoes, setSolicitacoes] = useState([]);
@@ -83,7 +84,7 @@ export const Home = () => {
                     id={solicitacao.id}
                     nomeEmpresa={solicitacao.nomeEmpresa}
                     cnpjEmpresa={solicitacao.cnpj}
-                    valorSolicitado={solicitacao.valorSolicitado}
+                    valorSolicitado={intl.format(solicitacao.valorSolicitado)}
                   />
                 </Col>
               ))

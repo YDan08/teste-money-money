@@ -17,7 +17,8 @@ export const IconButton = styled(Button)`
   color: white;
   && {
     :hover {
-      color: black;
+      color: white;
+      background-color: #fe7f2b;
       border: 0px;
     }
   }
