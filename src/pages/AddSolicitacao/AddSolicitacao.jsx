@@ -1,15 +1,5 @@
-/* eslint-disable no-unused-vars */
 import { ArrowLeftOutlined } from '@ant-design/icons';
-import {
-  Button,
-  Col,
-  Form,
-  Input,
-  InputNumber,
-  message,
-  Row,
-  Typography,
-} from 'antd';
+import { Button, Col, Form, Input, message, Row, Typography } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import LayoutDefault from '../../components/LayoutDefault';
@@ -118,7 +108,7 @@ export const AddSolicitacao = () => {
                 },
               ]}
             >
-              <InputNumber prefix="R$" style={{ width: '100%' }} />
+              <Input prefix="R$" type="number" />
             </Form.Item>
             <Form.Item
               label="Valor solicitado"
@@ -134,7 +124,7 @@ export const AddSolicitacao = () => {
               name="cnpj"
               rules={[{ required: true, message: 'O CNPJ é obrigatório' }]}
             >
-              <Input maxLength={18} name="cnpj" />
+              <Input maxLength={18} />
             </Form.Item>
           </Col>
 
@@ -204,7 +194,7 @@ export const AddSolicitacao = () => {
               name="cpf"
               rules={[{ required: true, message: 'O cpf é obrigatório' }]}
             >
-              <Input />
+              <Input maxLength={14} />
             </Form.Item>
           </Col>
 
