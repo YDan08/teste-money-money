@@ -5,57 +5,57 @@
       "nomeEmpresa": "Money Money Invest",
       "faturamentoAnual": 180000,
       "valorSolicitado": 20000,
-      "cnpj": 131232131,
+      "cnpj": "42.956.590/0001-70",
       "endereco": {
         "rua": "Rua Neto da Silva",
         "numero": 658,
-        "cep": "12430242-09",
+        "cep": "33934-110",
         "cidade": "São Paulo",
         "estado": "São Paulo",
         "bairro": "Pinheiros"
       },
-      "nomeResponsavel": "Daniel",
-      "telefone": "11 949594000",
-      "email": "algo@moneymoney.com.br",
-      "cpf": "123123131"
+      "nomeResponsavel": "João Campos",
+      "telefone": "(63) 93648-6078",
+      "email": "joao.campos@moneymoney.com.br",
+      "cpf": "786.551.065-93"
     },
     {
       "id": 2,
       "nomeEmpresa": "Montreal Viagens",
       "faturamentoAnual": 180000,
       "valorSolicitado": 20000,
-      "cnpj": 131232131,
+      "cnpj": "14.993.777/0001-09",
       "endereco": {
         "rua": "Rua Neto da Silva",
         "numero": 658,
-        "cep": "12430242-09",
+        "cep": "06654-620",
         "cidade": "São Paulo",
         "estado": "São Paulo",
         "bairro": "Pinheiros"
       },
-      "nomeResponsavel": "Daniel",
-      "telefone": "11 949594000",
-      "email": "algo@moneymoney.com.br",
-      "cpf": "123123131"
+      "nomeResponsavel": "Pietra Fernandes",
+      "telefone": "(54) 2412-8647",
+      "email": "pietra.fernandes@montrealviagens.com.br",
+      "cpf": "331.123.646-78"
     },
     {
       "id": 3,
       "nomeEmpresa": "Tesouraria Junior",
       "faturamentoAnual": 180000,
       "valorSolicitado": 20000,
-      "cnpj": 131232131,
+      "cnpj": "18.543.137/0001-58",
       "endereco": {
         "rua": "Rua Neto da Silva",
         "numero": 658,
-        "cep": "12430242-09",
+        "cep": "33140-750",
         "cidade": "São Paulo",
         "estado": "São Paulo",
         "bairro": "Pinheiros"
       },
-      "nomeResponsavel": "Daniel",
-      "telefone": "11 949594000",
-      "email": "algo@moneymoney.com.br",
-      "cpf": "123123131"
+      "nomeResponsavel": "Maysa Lima",
+      "telefone": "(44) 2829-0560",
+      "email": "maysa.lima@tesourariajunior.com.br",
+      "cpf": "644.620.498-10"
     }
   ]
 }
