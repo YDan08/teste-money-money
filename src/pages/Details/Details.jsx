@@ -27,9 +27,17 @@ export const Details = () => {
 
   useEffect(() => {
     (async () => {
-      const dados = await api.get(`/solicitacoes/${state.id}`);
-      setSolicitacao(dados.data);
+      try {
+        const dados = await api.get(`/solicitacoes/${state.id}`);
+        setSolicitacao(dados.data);
+      } catch (e) {
+        navigate(routes.home);
+      }
     })();
+
+    if (!state?.id) {
+      navigate(routes.home);
+    }
   }, []);
 
   const excluirSolicitacao = async () => {
