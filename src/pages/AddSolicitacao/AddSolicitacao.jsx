@@ -14,6 +14,13 @@ import {
   formatCPFInput,
   formatTelefoneInput,
 } from '../../utils/formats';
+import {
+  validarCPF,
+  validarEmail,
+  validarCNPJ,
+  validarCEP,
+  validarTelefone,
+} from '../../utils/validators';
 
 export const AddSolicitacao = () => {
   const navigate = useNavigate();
@@ -122,7 +129,10 @@ export const AddSolicitacao = () => {
             <Form.Item
               label="CNPJ"
               name="cnpj"
-              rules={[{ required: true, message: 'O CNPJ é obrigatório' }]}
+              rules={[
+                { required: true, message: 'O CNPJ é obrigatório' },
+                { validator: async (_, value) => await validarCNPJ(value) },
+              ]}
             >
               <Input maxLength={18} />
             </Form.Item>
@@ -132,7 +142,11 @@ export const AddSolicitacao = () => {
             <TituloCategoria>Endereço</TituloCategoria>
           </Categoria>
           <Col span={20}>
-            <Form.Item label="CEP" name={['endereco', 'cep']}>
+            <Form.Item
+              label="CEP"
+              name={['endereco', 'cep']}
+              rules={[{ validator: async (_, value) => validarCEP(value) }]}
+            >
               <Input maxLength={9} />
             </Form.Item>
             <Row justify="space-between" gutter={8}>
@@ -143,7 +157,7 @@ export const AddSolicitacao = () => {
               </Col>
               <Col span={8}>
                 <Form.Item label="Número" name={['endereco', 'numero']}>
-                  <Input />
+                  <Input type="number" />
                 </Form.Item>
               </Col>
             </Row>
@@ -178,21 +192,37 @@ export const AddSolicitacao = () => {
             <Form.Item
               label="Telefone de contato"
               name="telefone"
-              rules={[{ required: true, message: 'O telefone é obrigatório' }]}
+              rules={[
+                { required: true, message: 'O telefone é obrigatório' },
+                { validator: async (_, value) => validarTelefone(value) },
+              ]}
             >
-              <Input maxLength={15} />
+              <Input maxLength={15} type="tel" />
             </Form.Item>
             <Form.Item
               label="Email"
               name="email"
-              rules={[{ required: true, message: 'O email é obrigatório' }]}
+              rules={[
+                {
+                  required: true,
+                  message: 'O email é obrigatório',
+                },
+                {
+                  validator: async (_, value) => await validarEmail(value),
+                },
+              ]}
             >
-              <Input />
+              <Input type="email" />
             </Form.Item>
             <Form.Item
               label="CPF"
               name="cpf"
-              rules={[{ required: true, message: 'O cpf é obrigatório' }]}
+              rules={[
+                { required: true, message: 'O cpf é obrigatório' },
+                {
+                  validator: async (_, value) => await validarCPF(value),
+                },
+              ]}
             >
               <Input maxLength={14} />
             </Form.Item>

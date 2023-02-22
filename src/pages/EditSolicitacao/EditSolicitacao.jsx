@@ -1,5 +1,5 @@
 import { Button, Col, Form, Input, message, Row, Typography } from 'antd';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { useEffect } from 'react';
 import Categoria from '../../components/Categoria';
@@ -14,11 +14,18 @@ import {
   formatCPFInput,
   formatTelefoneInput,
 } from '../../utils/formats';
+import {
+  validarCEP,
+  validarCNPJ,
+  validarCPF,
+  validarEmail,
+  validarTelefone,
+} from '../../utils/validators';
 
 export const EditSolicitacao = () => {
   const [form] = Form.useForm();
   const { state } = useLocation();
-
+  const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
 
   const success = () => {
@@ -37,8 +44,12 @@ export const EditSolicitacao = () => {
 
   useEffect(() => {
     (async () => {
-      const dados = await api.get(`/solicitacoes/${state.id}`);
-      form.setFieldsValue(dados.data);
+      try {
+        const dados = await api.get(`/solicitacoes/${state.id}`);
+        form.setFieldsValue(dados.data);
+      } catch (e) {
+        navigate(routes.home);
+      }
     })();
   }, []);
 
@@ -134,7 +145,10 @@ export const EditSolicitacao = () => {
             <Form.Item
               label="CNPJ"
               name="cnpj"
-              rules={[{ required: true, message: 'O CNPJ é obrigatório' }]}
+              rules={[
+                { required: true, message: 'O CNPJ é obrigatório' },
+                { validator: async (_, value) => await validarCNPJ(value) },
+              ]}
             >
               <Input maxLength={18} />
             </Form.Item>
@@ -144,7 +158,11 @@ export const EditSolicitacao = () => {
             <TituloCategoria>Endereço</TituloCategoria>
           </Categoria>
           <Col span={20}>
-            <Form.Item label="CEP" name={['endereco', 'cep']}>
+            <Form.Item
+              label="CEP"
+              name={['endereco', 'cep']}
+              rules={[{ validator: async (_, value) => validarCEP(value) }]}
+            >
               <Input maxLength={9} />
             </Form.Item>
             <Row justify="space-between" gutter={8}>
@@ -155,7 +173,7 @@ export const EditSolicitacao = () => {
               </Col>
               <Col span={8}>
                 <Form.Item label="Número" name={['endereco', 'numero']}>
-                  <Input />
+                  <Input type="number" />
                 </Form.Item>
               </Col>
             </Row>
@@ -183,13 +201,35 @@ export const EditSolicitacao = () => {
             <Form.Item label="Nome completo" name="nomeResponsavel">
               <Input />
             </Form.Item>
-            <Form.Item label="Telefone de contato" name="telefone">
-              <Input maxLength={15} />
+            <Form.Item
+              label="Telefone de contato"
+              name="telefone"
+              rules={[
+                { validator: async (_, value) => validarTelefone(value) },
+              ]}
+            >
+              <Input maxLength={15} type="tel" />
             </Form.Item>
-            <Form.Item label="Email" name="email">
-              <Input />
+            <Form.Item
+              label="Email"
+              name="email"
+              rules={[
+                {
+                  validator: async (_, value) => await validarEmail(value),
+                },
+              ]}
+            >
+              <Input type="email" />
             </Form.Item>
-            <Form.Item label="CPF" name="cpf">
+            <Form.Item
+              label="CPF"
+              name="cpf"
+              rules={[
+                {
+                  validator: async (_, value) => await validarCPF(value),
+                },
+              ]}
+            >
               <Input maxLength={14} />
             </Form.Item>
           </Col>
