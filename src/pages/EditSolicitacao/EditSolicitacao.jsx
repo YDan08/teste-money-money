@@ -43,9 +43,13 @@ export const EditSolicitacao = () => {
   };
 
   useEffect(() => {
+    if (!state?.id) {
+      navigate(routes.home);
+    }
+
     (async () => {
       try {
-        const dados = await api.get(`/solicitacoes/${state.id}`);
+        const dados = await api.get(`/solicitacoes/${state?.id}`);
         form.setFieldsValue(dados.data);
       } catch (e) {
         navigate(routes.home);
@@ -93,7 +97,7 @@ export const EditSolicitacao = () => {
       >
         <Row justify="center">
           <Col span={20}>
-            <Link to={routes.details} state={{ id: state.id }}>
+            <Link to={routes.details} state={{ id: state?.id }}>
               <Button
                 icon={<ArrowLeftOutlined />}
                 type="text"

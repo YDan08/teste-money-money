@@ -26,18 +26,18 @@ export const Details = () => {
   };
 
   useEffect(() => {
+    if (!state?.id) {
+      navigate(routes.home);
+    }
+
     (async () => {
       try {
-        const dados = await api.get(`/solicitacoes/${state.id}`);
+        const dados = await api.get(`/solicitacoes/${state?.id}`);
         setSolicitacao(dados.data);
       } catch (e) {
         navigate(routes.home);
       }
     })();
-
-    if (!state?.id) {
-      navigate(routes.home);
-    }
   }, []);
 
   const excluirSolicitacao = async () => {
