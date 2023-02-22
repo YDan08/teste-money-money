@@ -25,19 +25,27 @@ export const Home = () => {
 
   useEffect(() => {
     (async () => {
-      const dados = await api.get('/solicitacoes');
-      setSolicitacoes(dados.data);
+      try {
+        const dados = await api.get('/solicitacoes');
+        setSolicitacoes(dados.data);
+      } catch (e) {
+        setSolicitacoes([]);
+      }
     })();
   }, []);
 
   useEffect(() => {
     (async () => {
-      const dados = await api.get('/solicitacoes', {
-        params: {
-          nomeEmpresa_like: busca,
-        },
-      });
-      setSolicitacoes(dados.data);
+      try {
+        const dados = await api.get('/solicitacoes', {
+          params: {
+            nomeEmpresa_like: busca,
+          },
+        });
+        setSolicitacoes(dados.data);
+      } catch (e) {
+        setSolicitacoes([]);
+      }
     })();
   }, [busca]);
 
