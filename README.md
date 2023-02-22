@@ -15,7 +15,7 @@ $ yarn install
 2° Rode o json-server
 
 ```
-$ yarn run json-server --watch ./mock/db.json
+$ yarn run json-server --watch ./mock/db.json -p 3030
 ```
 
 3° Rode o projeto react
