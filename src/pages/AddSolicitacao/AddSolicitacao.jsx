@@ -15,11 +15,11 @@ import {
   formatTelefoneInput,
 } from '../../utils/formats';
 import {
-  validarCPF,
-  validarEmail,
-  validarCNPJ,
-  validarCEP,
-  validarTelefone,
+  validatorCPF,
+  validatorEmail,
+  validatorCNPJ,
+  validatorCEP,
+  validatorTelefone,
 } from '../../utils/validators';
 
 export const AddSolicitacao = () => {
@@ -131,7 +131,7 @@ export const AddSolicitacao = () => {
               name="cnpj"
               rules={[
                 { required: true, message: 'O CNPJ é obrigatório' },
-                { validator: async (_, value) => await validarCNPJ(value) },
+                { validator: async (_, value) => await validatorCNPJ(value) },
               ]}
             >
               <Input maxLength={18} />
@@ -145,7 +145,7 @@ export const AddSolicitacao = () => {
             <Form.Item
               label="CEP"
               name={['endereco', 'cep']}
-              rules={[{ validator: async (_, value) => validarCEP(value) }]}
+              rules={[{ validator: async (_, value) => validatorCEP(value) }]}
             >
               <Input maxLength={9} />
             </Form.Item>
@@ -194,7 +194,7 @@ export const AddSolicitacao = () => {
               name="telefone"
               rules={[
                 { required: true, message: 'O telefone é obrigatório' },
-                { validator: async (_, value) => validarTelefone(value) },
+                { validator: async (_, value) => validatorTelefone(value) },
               ]}
             >
               <Input maxLength={15} type="tel" />
@@ -208,7 +208,7 @@ export const AddSolicitacao = () => {
                   message: 'O email é obrigatório',
                 },
                 {
-                  validator: async (_, value) => await validarEmail(value),
+                  validator: async (_, value) => await validatorEmail(value),
                 },
               ]}
             >
@@ -220,7 +220,7 @@ export const AddSolicitacao = () => {
               rules={[
                 { required: true, message: 'O cpf é obrigatório' },
                 {
-                  validator: async (_, value) => await validarCPF(value),
+                  validator: async (_, value) => await validatorCPF(value),
                 },
               ]}
             >

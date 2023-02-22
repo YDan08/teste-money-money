@@ -1,9 +1,9 @@
 import * as yup from 'yup';
 
-export const validarEmail = async (email) =>
+export const validatorEmail = async (email) =>
   yup.string().email('Digite um email válido').validate(email);
 
-export const validarCPF = (cpf) =>
+export const validatorCPF = (cpf) =>
   cpf.length > 0 &&
   yup
     .string()
@@ -13,7 +13,7 @@ export const validarCPF = (cpf) =>
     )
     .validate(cpf);
 
-export const validarCNPJ = (cnpj) =>
+export const validatorCNPJ = (cnpj) =>
   yup
     .string()
     .matches(
@@ -22,14 +22,14 @@ export const validarCNPJ = (cnpj) =>
     )
     .validate(cnpj);
 
-export const validarCEP = (cep) =>
+export const validatorCEP = (cep) =>
   cep.length > 0 &&
   yup
     .string()
     .matches(/([0-9]{5}[-]?[0-9]{3})/, 'Digite um CEP válido')
     .validate(cep);
 
-export const validarTelefone = (telefone) =>
+export const validatorTelefone = (telefone) =>
   telefone.length > 0 &&
   yup
     .string()

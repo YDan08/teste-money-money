@@ -15,11 +15,11 @@ import {
   formatTelefoneInput,
 } from '../../utils/formats';
 import {
-  validarCEP,
-  validarCNPJ,
-  validarCPF,
-  validarEmail,
-  validarTelefone,
+  validatorCEP,
+  validatorCNPJ,
+  validatorCPF,
+  validatorEmail,
+  validatorTelefone,
 } from '../../utils/validators';
 
 export const EditSolicitacao = () => {
@@ -151,7 +151,7 @@ export const EditSolicitacao = () => {
               name="cnpj"
               rules={[
                 { required: true, message: 'O CNPJ é obrigatório' },
-                { validator: async (_, value) => await validarCNPJ(value) },
+                { validator: async (_, value) => await validatorCNPJ(value) },
               ]}
             >
               <Input maxLength={18} />
@@ -165,7 +165,7 @@ export const EditSolicitacao = () => {
             <Form.Item
               label="CEP"
               name={['endereco', 'cep']}
-              rules={[{ validator: async (_, value) => validarCEP(value) }]}
+              rules={[{ validator: async (_, value) => validatorCEP(value) }]}
             >
               <Input maxLength={9} />
             </Form.Item>
@@ -209,7 +209,7 @@ export const EditSolicitacao = () => {
               label="Telefone de contato"
               name="telefone"
               rules={[
-                { validator: async (_, value) => validarTelefone(value) },
+                { validator: async (_, value) => validatorTelefone(value) },
               ]}
             >
               <Input maxLength={15} type="tel" />
@@ -219,7 +219,7 @@ export const EditSolicitacao = () => {
               name="email"
               rules={[
                 {
-                  validator: async (_, value) => await validarEmail(value),
+                  validator: async (_, value) => await validatorEmail(value),
                 },
               ]}
             >
@@ -230,7 +230,7 @@ export const EditSolicitacao = () => {
               name="cpf"
               rules={[
                 {
-                  validator: async (_, value) => await validarCPF(value),
+                  validator: async (_, value) => await validatorCPF(value),
                 },
               ]}
             >
