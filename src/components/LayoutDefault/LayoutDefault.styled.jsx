@@ -6,6 +6,10 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   padding: 80px 0;
+
+  @media only screen and (max-device-width: 720px) {
+    padding: 20px 0;
+  }
 `;
 
 export const BoxLayout = styled.div`
@@ -15,4 +19,8 @@ export const BoxLayout = styled.div`
   border: 1px solid #ececec;
   border-radius: 5px;
   padding: 30px;
+  @media only screen and (max-device-width: 720px) {
+    width: 100%;
+    border: 0px;
+  }
 `;
